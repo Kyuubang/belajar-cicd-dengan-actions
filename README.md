@@ -1,2 +1,2 @@
-# belajar-cicd-dengan-actions
+# Simple Project untuk Belajar GitHub Actions
 belajar ci cd dengan GitHub Actions

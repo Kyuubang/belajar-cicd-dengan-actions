@@ -1,0 +1,26 @@
+
+name: Deploy DO
+
+on:
+  workflow_run:
+    workflows:
+      - "Unit test"
+    types:
+      - completed
+      
+
+jobs:
+  build:
+    name: deploy to digital ocean over ssh command
+    runs-on: ubuntu-20.04
+    
+    steps:
+      - name : Deploy to production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            bash deploy.sh

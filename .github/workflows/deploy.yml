@@ -1,10 +1,11 @@
 name: Deploy DO
 
 on:
-  workflows:
-    - "Unit test"
-  types:
-    - completed
+  workflow_run:
+    workflows:
+      - "Unit test"
+    types:
+      - completed
     
 jobs:
   build:

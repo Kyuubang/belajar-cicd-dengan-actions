@@ -1,0 +1,22 @@
+name: Deploy DO
+
+on:
+  workflows:
+    - "Unit test"
+  types:
+    - completed
+    
+jobs:
+  build:
+    name: deploy to server over ssh command
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy to Production
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            echo "Hello world!"

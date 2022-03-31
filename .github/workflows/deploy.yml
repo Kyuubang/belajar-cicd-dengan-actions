@@ -1,0 +1,24 @@
+name: Deploy DO
+
+on:
+  workflow_run:
+    workflows:
+      - "Unit test"
+    types:
+      - completed
+
+jobs:
+  build:
+    name: setup runner 
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Deploy to Production
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd belajar-cicd-dengan-actions/
+            bash deploy.sh

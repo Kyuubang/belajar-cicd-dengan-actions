@@ -42,7 +42,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-          ${{ secrets.DOCKER_USER }}/flask-app:latest
-          ${{ secrets.DOCKER_USER }}/flask-app:${{ steps.sha_tag.outputs.tag }}
+            ${{ secrets.DOCKER_USER }}/flask-app:latest
+            ${{ secrets.DOCKER_USER }}/flask-app:${{ steps.sha_tag.outputs.tag }}
           build-args: |
             git_sha=${{ github.sha }}

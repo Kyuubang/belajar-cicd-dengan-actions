@@ -41,7 +41,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USER }}/flask-app:latest
-            ${{ secrets.DOCKER_USER }}/flask-app:${{ steps.sha_tag.outputs.tag }}
+            ${{ secrets.DOCKERHUB_USER }}/flask-app:latest
+            ${{ secrets.DOCKERHUB_USER }}/flask-app:${{ steps.sha_tag.outputs.tag }}
           build-args: |
             git_sha=${{ github.sha }}
